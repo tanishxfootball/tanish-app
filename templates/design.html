@@ -18,18 +18,20 @@
 
         button {
             padding: 10px 20px;
-            background: #00ffcc;
-            border: none;
+            background: #5b1af3;
+            border: goldenrod;
             cursor: pointer;
         }
     </style>
-    <a href="/about">Go to About Page</a>
+    
 </head>
 <body>
 
-    <h1>Backend is Running</h1>
+    <h1>welcome to Tanish's Website</h1>
     <p>This UI is served by Flask</p>
-    <button>Click Me</button>
+    <a href="{{ url_for('info') }}">
+    <button>Go to About Page</button>
+</a>
 
 </body>
 </html>
