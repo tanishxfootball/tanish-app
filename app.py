@@ -54,7 +54,7 @@ def reviews():
     ]
 
     return render_template(
-        "game.html",
+        "reviews.html",
         reviews=reviews_list,
         average=round(avg_rating, 1) if avg_rating else 0
     )
