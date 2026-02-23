@@ -1,10 +1,111 @@
-  <header>
-    <h1>Floppy Bird</h1>
-    <div class="score-container">
-      <div id="bestScore"></div>
-      <div id="currentScore"></div>
-    </div>
-  </header>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Reviews</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f1f3f4;
+            margin: 0;
+            padding: 40px;
+            display: flex;
+            justify-content: center;
+        }
 
-  <canvas id="canvas" width="431" height="768"></canvas>
-  
+        .container {
+            width: 700px;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            margin-top: 0;
+        }
+
+        .average-box {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .stars {
+            color: #fbbc04;
+        }
+
+        form input, form textarea, form select {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+
+        button {
+            padding: 10px 20px;
+            background: #1a73e8;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .review-card {
+            border-top: 1px solid #eee;
+            padding: 15px 0;
+        }
+
+        .review-name {
+            font-weight: bold;
+        }
+
+        .review-time {
+            font-size: 12px;
+            color: gray;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <h2>Customer Reviews</h2>
+
+    <div class="average-box">
+        ⭐ {{ average }} / 5
+    </div>
+
+    <form method="POST">
+        <input type="text" name="name" placeholder="Your Name" required>
+
+        <select name="rating" required>
+            <option value="">Select Rating</option>
+            <option value="5">⭐⭐⭐⭐⭐ (5)</option>
+            <option value="4">⭐⭐⭐⭐ (4)</option>
+            <option value="3">⭐⭐⭐ (3)</option>
+            <option value="2">⭐⭐ (2)</option>
+            <option value="1">⭐ (1)</option>
+        </select>
+
+        <textarea name="review" placeholder="Write your review..." required></textarea>
+
+        <button type="submit">Submit Review</button>
+    </form>
+
+    {% for review in reviews %}
+    <div class="review-card">
+        <div class="review-name">{{ review.name }}</div>
+        <div class="stars">
+            {% for i in range(review.rating) %}
+                ⭐
+            {% endfor %}
+        </div>
+        <div>{{ review.text }}</div>
+        <div class="review-time">{{ review.time }}</div>
+    </div>
+    {% endfor %}
+
+</div>
+
+</body>
+</html>
