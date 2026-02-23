@@ -58,3 +58,5 @@ def reviews():
         reviews=reviews_list,
         average=round(avg_rating, 1) if avg_rating else 0
     )
+if __name__ == "__main__":
+    app.run(debug=True)
