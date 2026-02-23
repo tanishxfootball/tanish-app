@@ -1,0 +1,7 @@
+for pushing the new/edited code to git ;-
+
+git add .
+git commit -m "Updated homepage"
+git push
+
+[use these 3 lines to terminal]
